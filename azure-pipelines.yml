@@ -4,7 +4,14 @@
 
 trigger:
 - master
-
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: |
+      **/*.jar
+      Dockerfile
+      azure/*
+    TargetFolder: '$(build.artifactstagingdirectory)''
 resources:
 - repo: self
 
