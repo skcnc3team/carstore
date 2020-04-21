@@ -6,6 +6,12 @@ trigger:
 - master
 - task: CopyFiles@2
   inputs:
+- task: Docker@2
+  inputs:
+    containerRegistry: 'user29acr1'
+    repository: 'carstore'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: |
       **/*.jar
