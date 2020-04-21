@@ -43,7 +43,7 @@ stages:
         Contents: |
           **/*.jar
           Dockerfile
-          azure/*
+          kubernetes/*
         TargetFolder: '$(build.artifactstagingdirectory)'
     - task: PublishBuildArtifacts@1
       inputs:
