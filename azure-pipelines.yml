@@ -4,20 +4,6 @@
 
 trigger:
 - master
-- task: CopyFiles@2
-  inputs:
-- task: Docker@2
-  inputs:
-    containerRegistry: 'user29acr1'
-    repository: 'carstore'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: |
-      **/*.jar
-      Dockerfile
-      azure/*
-    TargetFolder: '$(build.artifactstagingdirectory)''
 resources:
 - repo: self
 
@@ -51,6 +37,14 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: |
+          **/*.jar
+          Dockerfile
+          azure/*
+        TargetFolder: '$(build.artifactstagingdirectory)'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
