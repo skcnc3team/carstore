@@ -10,7 +10,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '40a9b00d-da6f-4f70-9bc6-a66e9dcd0d3a'
-  imageRepository: 'skcncteamcarstore'
+  imageRepository: 'carstore'
   containerRegistry: 'user29acr1.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
