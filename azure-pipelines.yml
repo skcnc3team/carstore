@@ -45,6 +45,17 @@ stages:
           Dockerfile
           azure/*
         TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'user29acr1'
+        repository: 'carstore'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
