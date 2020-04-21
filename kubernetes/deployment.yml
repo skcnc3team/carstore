@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: carstore1
+  name: carstore
   labels:
-    app: carstore1
+    app: carstore
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: carstore1
+      app: carstore
   template:
     metadata:
       labels:
-        app: carstore1
+        app: carstore
     spec:
       containers:
-        - name: carstore1
+        - name: carstore
           image: user29acr1.azurecr.io/carstore:latest
           ports:
             - containerPort: 8080
